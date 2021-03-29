@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.company.AntoliniEntity" table="antolini" schema="shop_data">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="productName">
+            <column name="product_name" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+        <property name="productPrice">
+            <column name="product_price" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="productCategory">
+            <column name="product_category" sql-type="varchar(1024)" length="1024" not-null="true"/>
+        </property>
+        <property name="productLink">
+            <column name="product_link" sql-type="varchar(4096)" length="4096" not-null="true"/>
+        </property>
+        <property name="lastUpdate">
+            <column name="last_update" sql-type="timestamp" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

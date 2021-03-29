@@ -1,5 +1,7 @@
 package com.company;
 
+import org.hibernate.Session;
+
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,8 +11,7 @@ import java.util.Properties;
 
 public class Database {
     public Database(){}
-
-
+/*
     public ArrayList<ArrayList<String>> getData(String shop) {
         ArrayList<ArrayList<String>> items = new ArrayList<>();
         try {
@@ -32,7 +33,15 @@ public class Database {
 
         return items;
     }
-
+ */
+    public List<AntoliniEntity> getData(String shop) {
+        List<AntoliniEntity> items = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        items = session.createQuery("from AntoliniEntity ", AntoliniEntity.class).list();
+        session.getTransaction().commit();
+        return items;
+    }
     public void writeData(ArrayList<ArrayList<String>> list, String shop){
                 try {
                     Connection con = connectToDB();
